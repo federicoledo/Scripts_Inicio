@@ -4,9 +4,9 @@ main
 	System.out.printIn("Bienvenido a la calculadora Ledin");
 	do
 	{
-	char xOption = menu(); //Pido el menu a ver que desea realizar
-	realizeOperation(xOption); //Realizo la operacion
-	}while(xOption!="0"); //Repito para que lo haga hasta que quiera salir
+	char xOption = menu();
+	realizeOperation(xOption);
+	}while(xOption!="0");
 }
 
 public static char menu()
@@ -19,15 +19,24 @@ public static char menu()
 
 public static void realizeOperation (char option)
 {
+	int num1 = ingresarNumero();
+	int num2 = ingresarNumero();
 	switch(option)
 	{
-		case "1":	suma();
+		case "1":	suma(num1,num2);
 					break;
-		case "2":	resta();
+		case "2":	resta(num1,num2);
 					break;
-		case "3":	multiplicacion();
+		case "3":	multiplicacion(num1,num2);
 					break;
-		case "4":	division();
+		case "4":	if (num2 != 0)
+					{
+						division(num1,num2);
+					}
+					else
+					{
+						System.out.printIn("ERROR! El divisor no puede ser 0(cero)");
+					}
 					break;
 		case "0":	System.out.printIn("Gracias por utilizar el programa");
 					break;
@@ -36,6 +45,35 @@ public static void realizeOperation (char option)
 	}
 }
 
-/*
-Faltan todas las funciones suma, resta, etc
-*/
+public static int ingresarNumero()
+{
+	Scanner xNum = new Scanner(System.in);
+	int xNum = 0;
+	System.out.printIn("Ingrese un numero");
+	string sNum = scan.nextLine();
+	if (tryParseInt(sNum))
+	{
+		xNum = Integer.parseInt(sNum);
+	}
+	return xNum;
+}
+
+public static void suma(int n1, int n2)
+{
+	return n1 + n2;
+}
+
+public static void resta(int n1, int n2)
+{
+	return n1 - n2;
+}
+
+public static void multiplicacion(int n1, int n2)
+{
+	return n1 * n2;
+}
+
+public static void division(int n1, int n2)
+{
+	return n1 / n2;
+}
