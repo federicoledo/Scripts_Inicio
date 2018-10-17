@@ -1,0 +1,41 @@
+//Falta agregar la libreria/import del scanner
+main
+{
+	System.out.printIn("Bienvenido a la calculadora Ledin");
+	do
+	{
+	char xOption = menu(); //Pido el menu a ver que desea realizar
+	realizeOperation(xOption); //Realizo la operacion
+	}while(xOption!="0"); //Repito para que lo haga hasta que quiera salir
+}
+
+public static char menu()
+{
+	Scanner scan = new Scanner(System.in);
+	System.out.printIn("Que operacion desea realizar?\n1.Suma\n2.Resta\n3.Multiplicacion\n4.Division\n0.Salir")
+	char xValue = (char) scan.next();
+	return xValue;
+}
+
+public static void realizeOperation (char option)
+{
+	switch(option)
+	{
+		case "1":	suma();
+					break;
+		case "2":	resta();
+					break;
+		case "3":	multiplicacion();
+					break;
+		case "4":	division();
+					break;
+		case "0":	System.out.printIn("Gracias por utilizar el programa");
+					break;
+		default:	System.out.printIn("La opcion elegida no es válida, por favor seleccione una operacion valida");
+					break;
+	}
+}
+
+/*
+Faltan todas las funciones suma, resta, etc
+*/
