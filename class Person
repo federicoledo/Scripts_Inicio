@@ -1,0 +1,96 @@
+public class Person
+{
+	int age, day, month, year;
+	string name, surname, dni;
+	
+	public Person()
+	{
+		this.age = establecerEdad(1, 1, 1899);
+		this.dni = '0';
+		this.day = 1;
+		this.month = 1;
+		this.year = 1899;
+		this.name = "No";
+		this.surname = "Name";		
+	}
+	
+	public Person(string dni_, int day_, int month_, int year_, string name_, string surname_)
+	{
+		this.age = establecerEdad(day_, month_, year_);
+		this.dni = dni_; //algo que valide DNI
+		this.year = year_; 
+		this.month = validaMes(month_); 
+		this.day = validaDia(day_, month_); 
+		this.name = name_;
+		this.surname = surname_;		
+	}
+	
+	public static int establecerEdad(int D, int M, int Y)
+	{
+		int añoProvisorio = Calendar.getInstance().get(Calendar.YEAR) - Y; //Year.now().getValue()
+		int edad = añoProvisorio;
+		int mesProvisorio = Calendar.getInstance().get(Calendar.MONTH); 
+		if (M == mesProvisorio)
+		{
+			if(D>Calendar.getInstance().get(Calendar.DAY))
+				edad = añoProvisorio - 1;
+		}
+		else
+		{
+			if(M<mesProvisorio)
+			{
+				edad = añoProvisorio;
+			}
+			else
+			{
+				edad = añoProvisorio - 1;
+			}
+		}		
+		return edad;		
+	}
+	
+	public static int validaDia(int D,int M)
+	{
+		Scanner scn = new Scanner();
+		int diasMes;
+		if(M==2)
+		{
+			diasMes = 28;
+		}
+		else
+		{
+			if(M==4||M==6||M==9||M==11)
+			{
+				diasMes = 30;
+			}
+			else
+			{
+				diasMes = 31;
+			}
+		}
+		while(D<=0||D>diasMes)
+		{
+			println("ERROR! Los dias del mes ingresado son mayores a los permitidos. Ingreselo nuevamente");
+			D = scn.nextInt();
+		}
+		
+		return D;
+	}
+	
+	public static int validaMes(int M)
+	{
+		Scanner scn = new Scanner();
+		while(M<1||M>12)
+		{
+			println("ERROR! El numero de mes ingresado no es correcto, ingreselo nuevamente");
+			M = scn.nextInt();
+		}
+		return M;
+	}
+	
+	public static int validaDNI(string doc)
+	{
+		return doc;
+	}
+	
+}
