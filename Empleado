@@ -1,0 +1,50 @@
+public class Empleado extends Persona
+{
+
+	public string job; //esto despues se puede cambiar por un enum
+	public int yearsWorked;
+	public float salary;
+	public Empleado()
+	{
+		
+	}
+	
+	public Empleado()
+	{
+		super();
+	}
+	
+	public Empleado(string dni_, int day_, int month_, int year_, string name_, string surname_, string job_, int yearsWorked_)
+	{
+		super(dni_, day_, month_, year_, name_, surname_);
+		this.job = job_;
+		this.yearsWorked = yearsWorked_;
+		this.salary = setSueldo(job_, yearsWorked_)
+	}
+	
+	public static int setSueldo(string trabajo, int años)
+	{
+		int sueldobase=0;
+		int valorAntiguedad=0;
+		int valortotal=0;
+		switch(trabajo)
+		{
+			case "Programador":
+				sueldobase = 20000;
+				break;
+			case "Contador":
+				sueldobase = 25000;
+				break;
+			case "Gerente":
+				sueldobase = 40000;
+				break;
+			default:
+				println("HOLA JEFE!");
+				break;
+		}
+		valorAntiguedad = (sueldobase * 0.035) * años
+		valortotal = sueldobase +valorAntiguedad;
+		return valortotal;
+	}
+
+}
