@@ -5,13 +5,7 @@ public class Person
 	
 	public Person()
 	{
-		this.age = establecerEdad(1, 1, 1899);
-		this.dni = '0';
-		this.day = 1;
-		this.month = 1;
-		this.year = 1899;
-		this.name = "No";
-		this.surname = "Name";		
+	
 	}
 	
 	public Person(string dni_, int day_, int month_, int year_, string name_, string surname_)
